@@ -5,11 +5,17 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "clear-cache": "watchman watch-del-all && rm -rf node_modules/ && yarn install && react-native start --reset-cache",
+    "bundle_android_debug": "react-native bundle --dev false --platform android --entry-file index.js --bundle-output ./android/app/build/intermediates/assets/debug/app.bundle --assets-dest ./android/app/build/intermediates/res/merged/debug && cd android && ./gradlew assembleDebug",
+    "open_emuloa": "cd ${ANDROID_HOME}/emulator && ./emulator -avd emuloa",
+    "gradlew_clean": "cd android && ./gradlew clean"
   },
   "dependencies": {
     "react": "16.8.3",
-    "react-native": "0.59.3"
+    "react-native": "0.59.3",
+    "react-native-gesture-handler": "^1.1.0",
+    "react-navigation": "^3.7.1"
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",
